@@ -1,5 +1,11 @@
+'use strict'
+
 import url from 'url'
 import path from 'path'
+import applyfilter from './filters'
+import fs from 'fs'
+const app = require('electron').remote;
+const dialog = app.dialog;
 
 window.addEventListener('load', () => {
   //openFiles
@@ -8,6 +14,8 @@ window.addEventListener('load', () => {
   //searchBox
   addImagesEvents()
   searchImagesEvent()
+  selectFilterEvent()
+  selectFiles()
 })
 
 function addImagesEvents(){
@@ -60,4 +68,29 @@ function searchImagesEvent(){
 function selectFirstImage(){
   const image = document.querySelector('li.list-group-item:not(.hidden)')
   changeImage(image)
+}
+
+function selectFilterEvent(){
+  const select = document.getElementById('filters')
+  select.addEventListener('change', function(){
+    applyfilter(this.value, document.getElementById('fullImg'))
+  })
+}
+
+
+function selectFiles(){
+  document.getElementById('openFiles').addEventListener('click', function(){
+
+    dialog.showOpenDialog((fileNames) => {
+        // fileNames is an array that contains all the selected
+        if(fileNames === undefined){
+            console.log("No file selected");
+            return;
+        }
+
+        console.log('the file is: ', fileNames)
+    });
+
+
+  })
 }
