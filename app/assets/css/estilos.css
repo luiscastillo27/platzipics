@@ -1,3 +1,43 @@
-body {
-  background: blue;
+*{
+  padding: 0px;
+  margin: 0px;
+}
+
+.space-button{
+  margin-right: 5px;
+}
+
+.header-menu{
+  margin: 0px;
+  height: 53px;
+  background: #eee;
+}
+
+.header-menu button{
+  margin-top: 15px;
+}
+
+.move-right{
+  float: right;
+}
+
+.content-img{
+  display: block;
+  position: absolute;
+  top: 53px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  padding: 27px;
+}
+
+.content-img .full-img{
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.hidden{
+  display: none;
 }
