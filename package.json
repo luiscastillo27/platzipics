@@ -1,0 +1,30 @@
+{
+  "name": "platzipics",
+  "version": "1.0.0",
+  "description": "aplicacion para efectos de imagenes",
+  "main": "index.js",
+  "scripts": {
+    "lint": "standard",
+    "dev": "cross-env NODE_ENV=development electron app/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luiscastillo27/platzipics.git"
+  },
+  "author": "Luis Manuel Castillo Zamorano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luiscastillo27/platzipics/issues"
+  },
+  "homepage": "https://github.com/luiscastillo27/platzipics#readme",
+  "dependencies": {
+    "cross-env": "4.0.0",
+    "electron-compile": "6.4.1",
+    "electron-debug": "^2.0.0"
+  },
+  "devDependencies": {
+    "devtron": "^1.4.0",
+    "electron-prebuilt-compile": "1.6.6"
+  }
+}
