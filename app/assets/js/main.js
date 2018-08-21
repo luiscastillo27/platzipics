@@ -81,16 +81,16 @@ function selectFilterEvent(){
 function selectFiles(){
   document.getElementById('openFiles').addEventListener('click', function(){
 
-    dialog.showOpenDialog((fileNames) => {
-        // fileNames is an array that contains all the selected
-        if(fileNames === undefined){
-            console.log("No file selected");
-            return;
-        }
-
-        console.log('the file is: ', fileNames)
-    });
-
+    dialog.showOpenDialog({
+      buttonLabel:'Seleciona una carpeta con imagenes',
+      properties: ['openDirectory'],
+      filters: [{ name: 'Images', extensions: ['jpg', 'png', 'gif'] }]
+    }, (file) => {
+      if( file == undefined ){
+        return
+      }
+      console.log(file)
+    })
 
   })
 }

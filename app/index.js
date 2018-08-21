@@ -2,6 +2,7 @@
 
 const { app, BrowserWindow } = require('electron')
 const devTools = require('./devTools')
+var win = ''
 
 if (process.env.NODE_ENV === 'development') {
   devTools()
@@ -12,7 +13,7 @@ app.on('before-quit', () => {
 })
 
 app.on('ready', () => {
-  let win = new BrowserWindow({
+  win = new BrowserWindow({
     width: 800,
     height: 600,
     title: 'hola mundo',
