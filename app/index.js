@@ -2,6 +2,7 @@
 
 const { app, BrowserWindow } = require('electron')
 const devTools = require('./devTools')
+const handleErrors = require('./handle-errors')
 var win = ''
 
 if (process.env.NODE_ENV === 'development') {
@@ -9,7 +10,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 app.on('before-quit', () => {
-  console.log('saliendo....')
+  
 })
 
 app.on('ready', () => {
@@ -20,6 +21,8 @@ app.on('ready', () => {
     maximizable: false,
     show: false
   })
+
+  handleErrors(win)
 
   win.once('ready-to-show', () => {
     win.show()

@@ -2,20 +2,17 @@
 
 import url from 'url'
 import path from 'path'
-import applyfilter from './filters'
+import { applyfilter, saveImages } from './filters'
 import fs from 'fs'
 const app = require('electron').remote;
 const dialog = app.dialog;
 
 window.addEventListener('load', () => {
-  //openFiles
-  //selectFilter
-  //save
-  //searchBox
   addImagesEvents()
   searchImagesEvent()
   selectFilterEvent()
   selectFiles()
+  saveFile()
 })
 
 function addImagesEvents(){
@@ -77,7 +74,6 @@ function selectFilterEvent(){
   })
 }
 
-
 function selectFiles(){
   document.getElementById('openFiles').addEventListener('click', function(){
 
@@ -90,6 +86,22 @@ function selectFiles(){
         return
       }
       console.log(file)
+    })
+
+  })
+}
+
+function saveFile(){
+  document.getElementById('saveFile').addEventListener('click', function(){
+
+    dialog.showSaveDialog({
+      buttonLabel:'Guardar imagen',
+      filters: [{ name: 'Images', extensions: ['jpg', 'png', 'gif'] }]
+    }, (file) => {
+      if( file == undefined ){
+        return
+      }
+      saveImages(file)
     })
 
   })
